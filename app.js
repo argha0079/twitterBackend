@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to home route");
 });
 
-app.all("*", (req, res) => {
-  res.send("404 Not Found");
+app.use((req, res) => {
+    res.status(404).send("404 Not Found");
 });
 
 app.listen(PORT, () => {
