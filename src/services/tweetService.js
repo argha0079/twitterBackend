@@ -1,8 +1,9 @@
 import { Filter } from "bad-words"
 import { StatusCodes } from "http-status-codes"
 import { createTweetRepository, getTweetRepository, getTweetByIdRepository, deleteTweetRepository, updateTweetRepository } from "../repositories/tweetRepository.js"
+import uploadToCloudinary from "../utils/uploadToCloudinary.js";
 
-export async function createTweetService ({ caption, image }) {
+export async function createTweetService ({ caption, imageBuffer, mimetype }) {
     const filter = new Filter();
 
     if (filter.isProfane(caption)) {
@@ -10,10 +11,15 @@ export async function createTweetService ({ caption, image }) {
         console.log(filter.clean(caption));
         throw {
             message: 'Tweet contains blocked words',
-            status: 400
+            status: StatusCodes.BAD_REQUEST
         };
     }
-    const tweet = await createTweetRepository({ caption, image });
+    let imageUrl = ""
+    if (imageBuffer) {
+        const result = await uploadToCloudinary(imageBuffer, "tweets");
+        imageUrl = result.secure_url;
+    }
+    const tweet = await createTweetRepository({ caption, image: imageUrl });
     return tweet;
     
 }

@@ -1,5 +1,4 @@
 import Tweet from "../dbModels/tweet.model.js";
-import mongoose from "mongoose";
 
 export async function createTweetRepository({ caption, image }) {
     try {
@@ -39,7 +38,7 @@ export async function deleteTweetRepository(tweetId) {
 
 export async function updateTweetRepository(tweetId, caption) {
     try {
-        const tweet = await Tweet.findByIdAndUpdate(tweetId, { body }, { new: true });
+        const tweet = await Tweet.findByIdAndUpdate(tweetId, { caption }, { new: true });
         return tweet;
     } catch (error) {
         throw error;
