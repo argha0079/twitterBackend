@@ -19,6 +19,6 @@
     "mongoose": "^9.6.1",
     "morgan": "^1.10.1",
     "multer": "^2.1.1",
-    "multer-storage-cloudinary": "^4.0.0"
+    "zod": "^4.4.2"
   }
 }
