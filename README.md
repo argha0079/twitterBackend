@@ -30,7 +30,7 @@ Each tweet object contains:
 
 1. **Clone the repository:**
 ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/argha0079/twitterBackend.git
    cd twitter-backend
 ```
 
@@ -78,7 +78,6 @@ Each tweet object contains:
 ## 📝 Future Improvements (Notes for Students)
 
 - Add user authentication (Login/Register).
-- Implement actual image uploading (using Multer or Cloudinary).
 - Add a "Likes" or "Comments" feature.
 - Input validation using Joi or `express-validator`.
 
