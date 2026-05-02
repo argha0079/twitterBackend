@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { PORT } from "./src/config/envConfig.js";
+import connectDb from "./src/config/dbConfig.js";
+import { PORT, DB_URI } from "./src/config/envConfig.js";
 import apiRouter from "./src/routes/apiRouter.js";
 
 const app = express();
@@ -21,4 +22,5 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);;
+  connectDb()
 });
